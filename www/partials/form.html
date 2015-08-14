@@ -1,0 +1,80 @@
+<div ng-repeat="field in formular" ng-init="key=field.id;prop=schema.properties[key];title=prop.title||key;required=(schema.required && schema.required.indexOf(key)!==-1);">
+    <div ng-form="form">
+        <div class="control-group" ng-if="field.type==='text'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <input class="input-xxlarge" type="text" ng-model="doc[key]" ng-required="required" ng-disabled="field.disabled || isDisabled" /> <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div>
+
+        <div class="control-group" ng-if="field.type==='number'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <input class="input-xxlarge" type="number" ng-model="doc[key]" ng-required="required" ng-disabled="field.disabled || isDisabled" /> <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div>
+
+        <div class="control-group" ng-if="field.type==='url'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <span class="input-append">
+                <input class="input-xxlarge" type="url" ng-model="doc[key]" ng-required="required" ng-disabled="field.disabled || isDisabled" />
+                    <a ng-href="{{doc[key]}}" class="btn" target="_blank"><i class="icon-external-link"></i></a>
+							</span><span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div>
+
+        <!-- Gruppe -->
+        <div ng-if="field.fields.length>0">
+            <legend>{{title}}</legend>
+            <formular formular="field.fields" schema="schema.properties[key]" doc="doc[key]" valid="valid[key]"></formular>
+        </div>
+
+        <legend ng-if="field.type==='ruler'">{{title}}</legend>
+
+
+        <div class="control-group" ng-if="field.type==='textarea'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <textarea class="input-xxlarge" ng-model="doc[key]" ng-required="required" ng-disabled="field.disabled || isDisabled"></textarea> <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div>
+
+        <div class="control-group" ng-if="field.type==='radio'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="myradio" ng-repeat="o in prop.enum">
+                <label class="radio">
+                    <input type="radio" ng-model="doc[key]" value="{{o}}" ng-required="required" ng-disabled="field.disabled || isDisabled" />{{o}} <span class="help-inline icon-flag" ng-show="form.$error.required && $first && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine && $first"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group" ng-if="field.type==='select'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <select class="input-xxlarge" ng-model="doc[key]" ng-options="s as s for s in prop.enum" ng-required="required" ng-disabled="field.disabled || isDisabled">
+                </select> <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div>
+
+        <div class="control-group" ng-if="field.type==='checkbox'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="doc[key]" ng-disabled="field.disabled || isDisabled" /> <span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group" ng-if="field.type==='datetime'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+            <div class="controls">
+                <span class="input-append">
+  							  <input class="input-xxlarge" type="text" ng-model="doc[key]" data-date-format="dd/mm/yyyy" bs-datepicker ng-required="required" ng-disabled="field.disabled || isDisabled">
+  							  <button type="button" class="btn" data-toggle="datepicker" ng-disabled="field.disabled || isDisabled"><i class="icon-calendar"></i></button>
+						  		</span>  <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
