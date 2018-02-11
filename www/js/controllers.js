@@ -182,6 +182,7 @@
             $scope.schema = $rootScope.configuration.schema.schema;
             $scope.showMissing = false;
             $scope.valid = {};
+            $scope.datepickers = {}
             $http.get('/couchdb/db-' + $rootScope.configuration.database + '/' + $stateParams.id).success(function (data, status, headers, config) {
                 $scope.doc = data;
             }).error(function (data, status, headers, config) {

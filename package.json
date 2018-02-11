@@ -1,0 +1,29 @@
+{
+  "name": "metadatabaseapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/os2geo/MetadatabaseApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/os2geo/MetadatabaseApp/issues"
+  },
+  "homepage": "https://github.com/os2geo/MetadatabaseApp#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.0",
+    "busboy": "^0.2.14",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "jsonfile": "^4.0.0",
+    "minimist": "^1.2.0",
+    "request": "^2.83.0"
+  }
+}

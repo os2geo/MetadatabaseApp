@@ -94,7 +94,29 @@ cursor: default;
 .radio input[type="radio"] {
     margin-left: 0px;
 }
-em {
+.media-list em {
     color: #000;
     background: #ff0;
+}
+.glyphicon {
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    margin-top: 0;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+}
+.glyphicon-chevron-right:before {
+    content: "\f054";
+}
+.glyphicon-chevron-left:before {
+    content: "\f053";
 }

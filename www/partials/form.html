@@ -66,13 +66,27 @@
             </div>
         </div>
 
-        <div class="control-group" ng-if="field.type==='datetime'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+        <!--div class="control-group" ng-if="field.type==='datetime'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
             <label class="control-label">{{title}}</label>
             <div class="controls">
                 <span class="input-append">
   							  <input class="input-xxlarge" type="text" ng-model="doc[key]" data-date-format="dd/mm/yyyy" bs-datepicker ng-required="required" ng-disabled="field.disabled || isDisabled">
   							  <button type="button" class="btn" data-toggle="datepicker" ng-disabled="field.disabled || isDisabled"><i class="icon-calendar"></i></button>
-						  		</span>  <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span><span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+                </span>
+                <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span>
+                <span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
+            </div>
+        </div-->
+
+        <div class="control-group" ng-if="field.type==='datetime'" ng-class="{error: form.$invalid && !form.$pristine && !(field.disabled || isDisabled), success: form.$valid && !form.$pristine && !(field.disabled || isDisabled), warning: form.$error.required && !(field.disabled || isDisabled)}">
+            <label class="control-label">{{title}}</label>
+                <div class="controls">
+                    <span class="input-append">
+                        <input class="input-xxlarge" type="text" ng-model="doc[key]" close-text="Luk" clear-text="Nulstil" current-text="I dag" datepicker-popup="dd/MM/yyyy" is-open="datepickers[key]" ng-required="required" ng-disabled="field.disabled || isDisabled">
+                            <button type="button" class="btn" ng-click="$event.preventDefault();$event.stopPropagation();datepickers[key]=true" ng-disabled="field.disabled || isDisabled"><i class="icon-calendar"></i></button>
+                    </span>
+                    <span class="help-inline icon-flag" ng-show="form.$error.required && !(field.disabled || isDisabled)"></span>
+                    <span class="icon-ok help-inline" ng-show="form.$valid && !form.$pristine"></span>
             </div>
         </div>
 
