@@ -53,5 +53,6 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('default', ['clean', 'copy', 'couch-compile', 'couch-push:www']);
     grunt.registerTask('deploy', ['clean', 'copy', 'couch-compile', 'couch-push:deploy']);
+    grunt.registerTask('test', ['clean', 'copy', 'couch-compile']);
 
 };

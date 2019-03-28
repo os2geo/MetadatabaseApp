@@ -167,7 +167,8 @@
             $scope.gem = function () {
                 $scope.spinner = "icon-spinner icon-spin icon-large";
                 $http.post('/couchdb/db-' + $rootScope.configuration.database, $scope.doc).success(function (data, status) {
-                    $state.go('home.search');
+                    // $state.go('home.search');
+                    $scope.spinner = "icon-save icon-large";
                 }).error(function (data, status) {
                     $scope.data = data || "Request failed";
                     $scope.status = status;
@@ -198,7 +199,8 @@
                     }
                 });
                 $http.put('/couchdb/db-' + $rootScope.configuration.database + '/' + $scope.doc._id, doc).success(function (data, status) {
-                    $state.go('home.search');
+                    // $state.go('home.search');
+                    $scope.spinner = "icon-save icon-large";
                 }).error(function (data, status) {
                     $scope.data = data || "Request failed";
                     $scope.status = status;
